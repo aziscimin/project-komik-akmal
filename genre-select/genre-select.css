@@ -1,0 +1,371 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Default light mode background */
+body {
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Pastikan body minimal setinggi viewport */
+    display: flex;
+    flex-direction: column; /* Membuat konten dan footer diatur dalam kolom */
+       
+    
+}
+
+
+a {
+    color: inherit; /* Mengikuti warna teks induknya */
+    text-decoration: none; /* Menghilangkan garis bawah jika diinginkan */
+}
+
+nav {
+    background-color: #d5467e;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    position: relative; /* Memastikan posisi nav bisa diatur dengan z-index */
+    z-index: 10; /* Prioritaskan agar elemen ini berada di atas konten lainnya */
+    
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding-right: 20rem;
+}
+
+nav ul.hidden {
+    display: none;
+}
+
+nav ul li {
+    padding: 8px 0;
+    padding-right: 20rem;
+}
+
+.menu-icon {
+    font-size: 28px;
+    display: none;
+    z-index: 20; /* Lebih tinggi dari konten lainnya */
+}
+
+
+/* CSS untuk layar mobile */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block; /* Tampilkan icon di layar kecil */
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #d5467e;
+        display: none; /* Sembunyikan menu saat pertama kali di layar kecil */
+    }
+
+    nav ul.hidden {
+        display: none;
+    }
+
+    nav ul li {
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav ul.show {
+        display: block; /* Tampilkan menu ketika 'show' class ditambahkan */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      position: fixed; /* Tetapkan posisi tetap untuk tetap di bagian atas */
+      top: 0;
+      width: 100%;
+      z-index: 10; /* Memastikan header tetap di atas elemen lainnya */
+    }
+
+    nav ul {
+      flex-direction: column;
+      width: 100%;
+      background-color: #d5467e; /* Tambahkan background agar dropdown jelas terlihat */
+      z-index: 9; /* Tetap lebih tinggi dari konten halaman lainnya */
+    }
+}
+
+
+
+/* Awal dasar */
+.hidden {
+    display: none; /* Menyembunyikan elemen hanya pada layar kecil (mobile) */
+  }
+  
+  /* Tampilan default untuk menu di layar besar */
+  nav ul {
+    background-color: #d5467e;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Pada layar besar, menu selalu terlihat */
+    gap: 1rem; /* Memberi jarak antar item */
+  }
+  
+  nav ul li {
+    padding: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Icon menu hanya terlihat di layar kecil */
+  .menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+    display: none; /* Pada layar besar, ikon menu tidak akan terlihat */
+  }
+  
+  /* Pengaturan responsif untuk layar kecil */
+  @media only screen and (max-width: 768px) {
+    /* Menyembunyikan menu dan menampilkan ikon di layar kecil */
+    nav ul {
+      display: none; /* Pada layar kecil, menu tidak terlihat secara default */
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #d5467e;
+    }
+  
+    /* Tampilkan menu saat tidak dalam status 'hidden' */
+    nav ul.hidden {
+      display: none; /* Tetap sembunyikan menu saat hidden */
+    }
+  
+    nav ul li {
+      text-align: center;
+      border-bottom: 1px solid white;
+    }
+  
+    /* Tampilkan ikon menu di layar kecil */
+    .menu-icon {
+      display: block;
+    }
+  }
+  
+  /* Pada layar besar (di luar mobile) */
+  @media only screen and (min-width: 769px) {
+    /* Selalu tampilkan menu */
+    nav ul {
+      display: flex !important; /* Pastikan selalu ditampilkan di layar besar */
+    }
+  
+    /* Sembunyikan ikon menu di layar besar */
+    .menu-icon {
+      display: none;
+    }
+  }
+  
+  
+
+
+
+
+
+
+
+
+.container-manga {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    padding-top: 200px;
+}
+.header-manga {
+    background-color: #d5467e;
+    color: #fff;
+    padding: 15px;
+    border-radius: 2px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+
+    
+}
+
+.view-all-manga {
+    background-color: gray;
+    color: #fff;
+    padding: 7px 15px;
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+.item {
+    background-color: auto;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(10% - 10px);
+    max-width: calc(20% - 10px);
+    min-width: 200px;
+    transition: transform 0.2s;
+}
+.item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.item:hover {
+    transform: scale(1.05);
+}
+.title {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .item {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+}
+@media (max-width: 480px) {
+    .item {
+        flex: 1 1 100%;
+        max-width: 10%;
+    }
+}
+.thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+.metadata {
+    padding: 10px;
+    color: gray;
+}
+
+.type {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.dtch .newchlabel {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    display: inline-block;
+}
+    
+.type {
+    position: absolute;
+    z-index: 1;
+    bottom: 20px;
+    right: 20px;
+    display: inline-block;
+    padding: 3px 6px;
+    font-size: 12px;
+    background-color: rgb(255 3 3 / 84%);
+    font-weight: var(--font-bold, 700);
+    color: #fff;
+    border-radius: 3px;
+}
+
+
+/* CSS untuk Samsung Galaxy S5 (360px x 640px) */
+@media only screen and (max-width: 360px) {
+    body {
+        background-color: black; /* Tetap menjaga tema hitam */
+        color: white;
+        padding: 10px; /* Menambahkan padding untuk membuat lebih nyaman dilihat di layar kecil */
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        background-color: #d5467e; /* Pastikan dropdown terlihat dengan jelas */
+    }
+
+    .menu-icon {
+        display: block; /* Tampilkan menu icon untuk layar kecil */
+    }
+
+    nav ul li {
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid white;
+    }
+
+    .container-manga {
+        padding-top: 100px; /* Kurangi padding agar lebih cocok dengan layar kecil */
+        margin: 10px auto;
+    }
+
+    .item {
+        flex: 1 1 calc(100% - 10px); /* Tampilkan satu item per baris */
+        max-width: calc(100% - 10px);
+    }
+
+    .header-manga {
+        padding: 10px;
+    }
+
+    .view-all-manga {
+        font-size: 8px;
+        padding: 5px 10px;
+    }
+
+    .title {
+        font-size: 12px; /* Kurangi ukuran font agar sesuai dengan layar kecil */
+    }
+
+    .metadata {
+        padding: 5px; /* Kurangi padding untuk layar kecil */
+    }
+
+    .dtch .newchlabel {
+        font-size: 10px;
+        padding: 3px;
+    }
+
+    .type {
+        font-size: 10px;
+        padding: 2px 4px;
+    }
+}
